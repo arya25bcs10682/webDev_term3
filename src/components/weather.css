@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Page Wrapper ─────────────────────────────────────── */
+.weather-app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  padding: 24px 16px;
+  transition: background 1s ease;
+}
+
+.weather-app {
+  width: 100%;
+  max-width: 480px;
+}
+
+/* ─── Header ────────────────────────────────────────────── */
+.title {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: rgba(122, 190, 238);
+  text-align: center;
+  letter-spacing: normal;
+  word-spacing: normal;
+  white-space: nowrap;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.85rem;
+  font-weight: 300;
+  margin-bottom: 28px;
+  letter-spacing: 0.5px;
+}
+
+/* ─── Search Bar ────────────────────────────────────────── */
+.search-wrap {
+  display: flex;
+  gap: 10px;
+}
+
+.search-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  padding: 14px 18px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  backdrop-filter: blur(10px);
+  transition: border 0.2s, background 0.2s;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.search-input:focus {
+  border-color: rgba(99, 179, 237, 0.6);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.search-btn {
+  background: linear-gradient(135deg, #63b3ed, #4299e1);
+  border: none;
+  border-radius: 14px;
+  padding: 14px 20px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.15s, opacity 0.2s;
+  font-family: inherit;
+  font-weight: 500;
+}
+
+.search-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.search-btn:active {
+  transform: translateY(0);
+}
+
+/* ─── History Dropdown ──────────────────────────────────── */
+.history-list {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  margin-top: 8px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.history-header {
+  padding: 10px 16px 6px;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.history-item {
+  padding: 10px 16px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background 0.15s;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.history-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+/* ─── History Chips ─────────────────────────────────────── */
+.history-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.chip {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 30px;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.chip:hover {
+  background: rgba(255, 255, 255, 0.13);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ─── Loading Card ──────────────────────────────────────── */
+.loading-card {
+  margin-top: 28px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: 48px 24px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #63b3ed;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Error Card ────────────────────────────────────────── */
+.error-card {
+  margin-top: 28px;
+  background: rgba(245, 101, 101, 0.12);
+  border: 1px solid rgba(245, 101, 101, 0.3);
+  border-radius: 20px;
+  padding: 20px 24px;
+  color: #fc8181;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  backdrop-filter: blur(10px);
+}
+
+/* ─── Weather Card ──────────────────────────────────────── */
+.weather-card {
+  margin-top: 28px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 28px;
+  padding: 32px 28px 28px;
+  backdrop-filter: blur(20px);
+  animation: slideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.city-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.country-badge {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.openweather-icon {
+  width: 64px;
+  height: 64px;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+
+.weather-emoji {
+  font-size: 2.8rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.temp-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin: 18px 0 6px;
+}
+
+.temp-big {
+  font-family: 'Syne', sans-serif;
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: normal;
+}
+
+.feels-like {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+.condition-text {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: capitalize;
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: 20px;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.stat-box {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 1.05rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* ─── Unit Toggle Button ────────────────────────────────── */
+.toggle-btn {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  background: rgba(99, 179, 237, 0.12);
+  border: 1px solid rgba(99, 179, 237, 0.25);
+  border-radius: 14px;
+  padding: 12px;
+  color: #63b3ed;
+  font-size: 0.88rem;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  letter-spacing: 0.3px;
+}
+
+.toggle-btn:hover {
+  background: rgba(99, 179, 237, 0.2);
+  border-color: rgba(99, 179, 237, 0.45);
+}
