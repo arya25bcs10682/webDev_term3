@@ -25,11 +25,11 @@ export function useWeatherFetch(query, setHistory) {
         );
 
         if (!res.ok) {
-          if (res.status === 404) throw new Error("City not found. Check the spelling and try again.");
-          if (res.status === 401) throw new Error("Invalid API key. Please replace YOUR_OPENWEATHERMAP_API_KEY.");
-          throw new Error("Something went wrong. Please try again.");
+          if (res.status === 404) throw new Error("kuch bhi mat type kiya karo yaar 😒😒");
+          if (res.status === 401) throw new Error("Api is not api-ing 🫠🫠");
+          if (res.status === 503) throw new Error("Api soone gaya hai aap bhi soo jao 🥱😩😩😴😪")
+          throw new Error("aisaa kya kar diye jo ye error dikhana pad raha hai 🙀🙀");
         }
-
         const data = await res.json();
 
         const result = {
